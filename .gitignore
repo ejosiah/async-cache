@@ -34,5 +34,4 @@ test-result
 tmp
 .idea_modules
 bin
-build.sbt
 conf/local.conf
