@@ -1,6 +1,6 @@
 package com.nomadic.coders.cache
 
-import com.typesafe.config.ConfigFactory
+import com.typesafe.config.{Config, ConfigFactory}
 
 import scala.concurrent.Future
 import scala.concurrent.duration.Duration
@@ -17,8 +17,12 @@ trait CacheApi {
 
   def set (key: String, value: Any, expiration: Duration = Duration.Inf): Future[Unit]
 
+  def clear(): Future[Unit]
+
 }
 
 object CacheApi {
   def apply() = new CacheApiImpl(ConfigFactory.load())
+
+  def apply(config: Config) = new CacheApiImpl(config)
 }
